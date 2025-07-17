@@ -5,15 +5,15 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    external-dns.alpha.kubernetes.io/hostname: "game.olaolat.com"
+    external-dns.alpha.kubernetes.io/hostname: "www.olaolat.com"
 spec:
   tls:
   - hosts:
-    - game.olaolat.com
+    - www.olaolat.com
     secretName: secret-tls
   ingressClassName: nginx
   rules:
-  - host: game.olaolat.com
+  - host: www.olaolat.com
     http:
       paths:
       - path: /

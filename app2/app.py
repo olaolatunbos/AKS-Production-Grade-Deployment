@@ -11,7 +11,7 @@ UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(api_key="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")
 
 CATEGORIES = [
     "Groceries", "Entertainment", "Transport", "Rent", "Salary",

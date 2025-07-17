@@ -27,20 +27,21 @@ module "container-registry" {
   resource_group_name = var.resource_group_name
 }
 
+# Azure Kubernetes Cluster
 resource "azurerm_kubernetes_cluster" "res-0" {
   automatic_upgrade_channel           = "patch"
   azure_policy_enabled                = false
   cost_analysis_enabled               = false
-  dns_prefix                          = "cluster-dns"
+  dns_prefix                          = "Kubernetes-cluster-dns"
   http_application_routing_enabled    = false
   image_cleaner_enabled               = true
   image_cleaner_interval_hours        = 168
   kubernetes_version                  = "1.32.5"
   local_account_disabled              = false
   location                            = "uksouth"
-  name                                = "cluster"
+  name                                = "Kubernetes-cluster"
   node_os_upgrade_channel             = "NodeImage"
-  node_resource_group                 = "MC_2048-app-prod-rg_cluster_uksouth"
+  node_resource_group                 = "MC_2048-app-prod-rg_Kubernetes-cluster_uksouth"
   oidc_issuer_enabled                 = true
   open_service_mesh_enabled           = false
   private_cluster_enabled             = false
@@ -54,6 +55,28 @@ resource "azurerm_kubernetes_cluster" "res-0" {
     Environment = "Production"
   }
   workload_identity_enabled = true
+  auto_scaler_profile {
+    balance_similar_node_groups                   = false
+    daemonset_eviction_for_empty_nodes_enabled    = false
+    daemonset_eviction_for_occupied_nodes_enabled = true
+    empty_bulk_delete_max                         = "10"
+    expander                                      = "random"
+    ignore_daemonsets_utilization_enabled         = false
+    max_graceful_termination_sec                  = "600"
+    max_node_provisioning_time                    = "15m"
+    max_unready_nodes                             = 3
+    max_unready_percentage                        = 45
+    new_pod_scale_up_delay                        = "0s"
+    scale_down_delay_after_add                    = "10m"
+    scale_down_delay_after_delete                 = "10s"
+    scale_down_delay_after_failure                = "3m"
+    scale_down_unneeded                           = "10m"
+    scale_down_unready                            = "20m"
+    scale_down_utilization_threshold              = "0.5"
+    scan_interval                                 = "10s"
+    skip_nodes_with_local_storage                 = false
+    skip_nodes_with_system_pods                   = true
+  }
   default_node_pool {
     auto_scaling_enabled         = true
     fips_enabled                 = false
@@ -64,9 +87,7 @@ resource "azurerm_kubernetes_cluster" "res-0" {
     min_count                    = 2
     name                         = "agentpool"
     node_count                   = 2
-    node_labels                  = {}
     node_public_ip_enabled       = false
-    vnet_subnet_id               = "/subscriptions/001a4eb4-4cb2-47b9-a3bd-de9b5304872c/resourceGroups/2048-app-prod-rg/providers/Microsoft.Network/virtualNetworks/2048-app-prod-rg-vnet/subnets/default"
     only_critical_addons_enabled = false
     orchestrator_version         = "1.32.5"
     os_disk_size_gb              = 128
@@ -79,6 +100,7 @@ resource "azurerm_kubernetes_cluster" "res-0" {
     type              = "VirtualMachineScaleSets"
     ultra_ssd_enabled = false
     vm_size           = "Standard_DS2_v2"
+    vnet_subnet_id    = "/subscriptions/001a4eb4-4cb2-47b9-a3bd-de9b5304872c/resourceGroups/2048-app-prod-rg/providers/Microsoft.Network/virtualNetworks/2048-app-prod-rg-vnet/subnets/default"
     zones             = []
     upgrade_settings {
       drain_timeout_in_minutes      = 0
@@ -96,7 +118,7 @@ resource "azurerm_kubernetes_cluster" "res-0" {
     duration     = 8
     frequency    = "Weekly"
     interval     = 1
-    start_date   = "2025-07-17T00:00:00Z"
+    start_date   = "2025-07-18T00:00:00Z"
     start_time   = "00:00"
     utc_offset   = "+00:00"
   }
@@ -106,8 +128,11 @@ resource "azurerm_kubernetes_cluster" "res-0" {
     duration     = 8
     frequency    = "Weekly"
     interval     = 1
-    start_date   = "2025-07-17T00:00:00Z"
+    start_date   = "2025-07-18T00:00:00Z"
     start_time   = "00:00"
     utc_offset   = "+00:00"
+  }
+
+  monitor_metrics {
   }
 }

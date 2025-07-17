@@ -1,20 +1,9 @@
 provider: azure
 
 azure:
-  resourceGroup: 2048-app-prod-rg
-  subscriptionId: 001a4eb4-4cb2-47b9-a3bd-de9b5304872c
+  secretName: azure-config-file 
 
 txtOwnerId: my-aks-cluster
 
 domainFilters:
   - olaolat.com
-
-extraVolumes:
-  - name: azure-config-file
-    secret:
-      secretName: azure-config-file
-
-extraVolumeMounts:
-  - name: azure-config-file
-    mountPath: /etc/kubernetes/
-    readOnly: true

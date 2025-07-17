@@ -1,0 +1,17 @@
+server:
+  extraArgs:
+    - --insecure
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: true
+    ingressClassName: "nginx"
+    annotations:
+      nginx.org/hsts: "false"
+      cert-manager.io/cluster-issuer: issuer
+    hosts:
+      - argocd.olaolat.com
+    tls:
+      - secretName: argocd-ingress-tls
+        hosts:
+          - argocd.olaolat.com

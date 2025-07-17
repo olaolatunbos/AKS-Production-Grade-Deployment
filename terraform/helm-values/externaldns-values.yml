@@ -1,0 +1,9 @@
+provider: azure
+
+azure:
+  secretName: azure-config-file 
+
+txtOwnerId: my-aks-cluster
+
+domainFilters:
+  - olaolat.com

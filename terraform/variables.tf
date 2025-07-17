@@ -1,46 +1,35 @@
-variable "subscription_id" {
-  description = "Azure Subscription ID"
+variable "dns_zone_name" {
   type        = string
-  sensitive   = true
-}
-
-variable "virtual_network_name" {
-  description = "Name of the virtual network"
-  type        = string
-}
-
-variable "subnet_name" {
-  description = "Name of the subnet"
-  type        = string
-}
-
-variable "rg_name" {
-  description = "Name of the resource group."
-  type        = string
+  description = "Azure DNS Zone name"
 }
 
 variable "location" {
-  description = "Azure region location"
   type        = string
-  default     = "UK South"
+  description = "Azure region."
+}
+
+variable "resource_group_name" {
+  type        = string
+  description = "Name of the resource group"
+}
+
+variable "container_registry_name" {
+  type        = string
+  description = "Container registry name"
+}
+
+variable "virtual_network_name" {
+  type        = string
+  description = "Virtual Network Name"
+}
+
+variable "subnet_name" {
+  type        = string
+  description = "Subnet Name"
 }
 
 variable "environment" {
-  description = "Deployment environment (e.g. dev, prod)"
   type        = string
-}
+  description = "Environment"
 
-variable "acr_name" {
-  description = "Azure Container Registry name"
-  type        = string
-}
-
-variable "aks_name" {
-  description = "Azure Kubernetes Service cluster name"
-  type        = string
-}
-
-variable "rg_id" {
-  description = "Resource Group ID (used for scope)"
-  type        = string
 }

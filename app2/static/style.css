@@ -1,0 +1,158 @@
+/* Basic resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+}
+
+/* Flex layout for full height */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header & footer styles */
+header,
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: #eee;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+    font-weight: 700;
+}
+
+/* Main area */
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+}
+
+/* Container that holds both sections side-by-side */
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    width: 100%;
+}
+
+/* Reusable card style */
+.card,
+.upload-section,
+.summary-container {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+}
+
+/* Upload section heading */
+.upload-section h2 {
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: #2c2c2c;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+input[type="file"] {
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #ddd;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+input[type="file"]:focus,
+input[type="file"]:hover {
+    border-color: #667eea;
+    outline: none;
+}
+
+button {
+    background: #667eea;
+    color: white;
+    padding: 1rem 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 5px 10px rgba(102, 126, 234, 0.4);
+}
+
+button:hover {
+    background: #5563c1;
+    box-shadow: 0 6px 14px rgba(85, 99, 193, 0.6);
+}
+
+/* Summary box */
+.summary-container h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.summary-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.summary-container th,
+.summary-container td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.summary-container th {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Download button */
+.download-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #667eea;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #667eea;
+}

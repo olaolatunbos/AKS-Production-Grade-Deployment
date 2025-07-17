@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bank Statement to Excel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <header>
+        <h1>StatementSmart</h1>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <!-- Upload Section -->
+            <section class="upload-section card">
+                <h2>Upload Your Bank Statement (PDF)</h2>
+                <form action="/" method="post" enctype="multipart/form-data">
+                    <input type="file" name="statement" accept=".pdf" required />
+                    <button type="submit">Summarise</button>
+                </form>
+                {% if summary %}
+                <a href="/download" class="download-btn">Download Excel File</a>
+                {% endif %}
+            </section>
+    
+            <!-- Summary Section (if available) -->
+            {% if summary %}
+            <section class="summary-container">
+                <h2>Spending Summary</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Total Spent (£)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in summary %}
+                        <tr>
+                            <td>{{ item['Category'] }}</td>
+                            <td>{{ "%.2f"|format(item['Money Out (£)']) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+            {% endif %}
+        </div>
+    </main>
+    
+
+    <footer>
+        <p>&copy; 2025 Statement Converter App</p>
+    </footer>
+</body>
+
+</html>

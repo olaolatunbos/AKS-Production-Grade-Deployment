@@ -10,7 +10,7 @@ variable "location" {
 
 variable "resource_group_name" {
   type        = string
-  description = "Name of the resource group"
+  description = "Name of resource group"
 }
 
 variable "container_registry_name" {

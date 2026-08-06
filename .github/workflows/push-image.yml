@@ -33,7 +33,7 @@ jobs:
         with:
           image-ref: "statement-smart:latest"
           format: "table"
-          exit-code: "0" # Set to "1" to fail on findings
+          exit-code: "0" 
           ignore-unfixed: true
           vuln-type: "os,library"
           severity: "CRITICAL,HIGH"

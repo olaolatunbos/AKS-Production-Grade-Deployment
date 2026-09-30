@@ -1,0 +1,11 @@
+flask
+pandas
+openpyxl
+pdfplumber      
+PyMuPDF            
+python-docx        
+pytesseract         
+Pillow              
+transformers
+xlsxwriter
+openai

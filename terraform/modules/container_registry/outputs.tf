@@ -1,11 +1,7 @@
-output "id" {
-  value = azurerm_container_registry.main.id
+output "acr_name" {
+  value = azurerm_container_registry.this.name
 }
 
-output "login_server" {
-  value = azurerm_container_registry.main.login_server
-}
-
-output "name" {
-  value = azurerm_container_registry.main.name
+output "acr_login_server" {
+  value = azurerm_container_registry.this.login_server
 }
